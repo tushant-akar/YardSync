@@ -9,7 +9,17 @@
         android:id="@+id/homeFragment"
         android:name="com.example.yardsync.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_incomingActivity"
+            app:destination="@id/incomingActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_outgoingActivity"
+            app:destination="@id/outgoingActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_yardFragment"
+            app:destination="@id/yardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/yardFragment"
         android:name="com.example.yardsync.ui.fragments.YardFragment"
@@ -30,4 +40,14 @@
         android:name="com.example.yardsync.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/incomingActivity"
+        android:name="com.example.yardsync.ui.IncomingActivity"
+        android:label="activity_incoming"
+        tools:layout="@layout/activity_incoming" />
+    <activity
+        android:id="@+id/outgoingActivity"
+        android:name="com.example.yardsync.ui.OutgoingActivity"
+        android:label="activity_outgoing"
+        tools:layout="@layout/activity_outgoing" />
 </navigation>
