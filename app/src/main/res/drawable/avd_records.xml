@@ -1,0 +1,64 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <!-- Define the vector drawable -->
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="48dp"
+            android:height="48dp"
+            android:viewportWidth="48"
+            android:viewportHeight="48">
+            <path
+                android:name="records_path1"
+                android:pathData="M15.625,7.867C16.287,7.866 16.949,7.865 17.631,7.864C19.034,7.864 20.436,7.865 21.838,7.87C23.991,7.875 26.144,7.87 28.297,7.863C29.656,7.864 31.016,7.865 32.375,7.867C34.243,7.869 34.243,7.869 36.148,7.871C39,8 39,8 40,9C40.086,10.343 40.107,11.69 40.098,13.035C40.094,13.844 40.091,14.653 40.088,15.486C40.075,16.762 40.075,16.762 40.063,18.063C40.058,18.917 40.053,19.771 40.049,20.65C40.037,22.767 40.019,24.883 40,27C35.05,27.495 35.05,27.495 30,28C31.06,29.286 31.06,29.286 33.504,29.098C34.513,29.086 35.523,29.074 36.563,29.063C37.574,29.053 38.586,29.044 39.629,29.035C40.411,29.024 41.194,29.012 42,29C42.081,30.77 42.139,32.541 42.188,34.313C42.24,35.792 42.24,35.792 42.293,37.301C42,40 42,40 40.904,41.644C38.059,43.67 35.711,43.389 32.25,43.398C31.595,43.401 30.941,43.404 30.267,43.407C28.885,43.409 27.503,43.404 26.121,43.391C24.007,43.375 21.895,43.391 19.781,43.41C18.437,43.408 17.094,43.404 15.75,43.398C14.528,43.395 13.306,43.392 12.047,43.388C9,43 9,43 7.096,41.644C5.465,39.198 5.71,37.21 5.813,34.313C5.84,33.319 5.867,32.325 5.895,31.301C5.929,30.542 5.964,29.782 6,29C6.782,29.012 7.565,29.023 8.371,29.035C9.383,29.044 10.395,29.053 11.438,29.063C12.447,29.074 13.456,29.086 14.496,29.098C16.94,29.286 16.94,29.286 18,28C14.7,27.67 11.4,27.34 8,27C7.973,24.021 7.953,21.042 7.938,18.063C7.925,16.787 7.925,16.787 7.912,15.486C7.909,14.677 7.906,13.869 7.902,13.035C7.897,12.286 7.892,11.537 7.886,10.766C8.159,6.532 12.271,7.87 15.625,7.867ZM17,14C17,14.99 17,15.98 17,17C19.64,17 22.28,17 25,17C25,16.01 25,15.02 25,14C22.36,14 19.72,14 17,14ZM17,21C17,21.99 17,22.98 17,24C19.64,24 22.28,24 25,24C25,23.01 25,22.02 25,21C22.36,21 19.72,21 17,21ZM18,30C19,33 19,33 19,33ZM29,30C30,33 30,33 30,33ZM22,35C26,36 26,36 26,36Z"
+                android:fillColor="#000000"/>
+            <path
+                android:name="records_path2"
+                android:pathData="M11,3C19.58,3 28.16,3 37,3C37,3.99 37,4.98 37,6C28.42,6 19.84,6 11,6C11,5.01 11,4.02 11,3Z"
+                android:fillColor="#000000"/>
+        </vector>
+    </aapt:attr>
+
+    <!-- Define animations for the paths -->
+    <target android:name="records_path1">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="trimPathStart"
+                    android:duration="600"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/linear_interpolator"/>
+                <objectAnimator
+                    android:propertyName="trimPathEnd"
+                    android:duration="600"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:anim/linear_interpolator"/>
+            </set>
+        </aapt:attr>
+    </target>
+
+    <target android:name="records_path2">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="600"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:interpolator="@android:anim/linear_interpolator"/>
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="600"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:interpolator="@android:anim/linear_interpolator"/>
+            </set>
+        </aapt:attr>
+    </target>
+
+</animated-vector>
