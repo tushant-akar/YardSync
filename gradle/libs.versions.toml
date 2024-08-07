@@ -15,7 +15,6 @@ activity = "1.9.1"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
-sscustomedittextoutlineborder = "1.0.15"
 storageKt = "2.5.4"
 
 [libraries]
@@ -35,7 +34,6 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "storageKt" }
-sscustomedittextoutlineborder = { module = "com.github.simformsolutions:SSCustomEditTextOutLineBorder", version.ref = "sscustomedittextoutlineborder" }
 storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "storageKt" }
 
 [plugins]

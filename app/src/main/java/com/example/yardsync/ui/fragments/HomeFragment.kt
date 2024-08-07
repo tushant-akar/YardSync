@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentHomeBinding
 import com.example.yardsync.viewModel.AuthViewModel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
