@@ -2,7 +2,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
 
-    <!-- Define the vector drawable -->
     <aapt:attr name="android:drawable">
         <vector
             android:width="48dp"
@@ -19,46 +18,4 @@
                 android:fillColor="#000000"/>
         </vector>
     </aapt:attr>
-
-    <!-- Define animations for the paths -->
-    <target android:name="records_path1">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:propertyName="trimPathStart"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-                <objectAnimator
-                    android:propertyName="trimPathEnd"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-            </set>
-        </aapt:attr>
-    </target>
-
-    <target android:name="records_path2">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:propertyName="scaleX"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-                <objectAnimator
-                    android:propertyName="scaleY"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-            </set>
-        </aapt:attr>
-    </target>
-
 </animated-vector>

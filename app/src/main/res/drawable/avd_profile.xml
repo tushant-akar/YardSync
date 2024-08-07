@@ -18,49 +18,4 @@
                 android:pathData="M29,2C32.125,3.875 32.125,3.875 34,7C34.989,12.026 34.777,15.705 32.125,20.125C27.705,22.777 24.026,22.989 19,22C15.875,20.125 15.875,20.125 14,17C13.011,11.974 13.223,8.295 15.875,3.875C20.295,1.223 23.974,1.011 29,2Z"/>
         </vector>
     </aapt:attr>
-
-    <target
-        android:name="profile1">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:propertyName="trimPathStart"
-                    android:duration="500"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-                <objectAnimator
-                    android:propertyName="trimPathEnd"
-                    android:duration="500"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-            </set>
-        </aapt:attr>
-    </target>
-
-    <target
-        android:name="profile2">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:propertyName="trimPathStart"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-                <objectAnimator
-                    android:propertyName="trimPathEnd"
-                    android:duration="600"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
-            </set>
-        </aapt:attr>
-    </target>
-
 </animated-vector>

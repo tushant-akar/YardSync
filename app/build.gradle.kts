@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -57,4 +58,11 @@ dependencies {
     implementation(libs.android.gif.drawable)
     //Custom Bottom Navigation Bar
     implementation(libs.curved.bottom.navigation)
+    //Supabase
+    implementation(libs.postgrest.kt)
+    implementation(libs.gotrue.kt)
+    implementation(libs.storage.kt)
+    implementation(libs.ktor.client.android)
+    //Datastore
+    implementation(libs.androidx.datastore.preferences)
 }

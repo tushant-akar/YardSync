@@ -2,19 +2,24 @@ package com.example.yardsync.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.yardsync.R
 import com.example.yardsync.databinding.ActivityMainBinding
+import com.example.yardsync.viewModel.AuthViewModel
+import kotlinx.coroutines.launch
 import np.com.susanthapa.curved_bottom_navigation.CbnMenuItem
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
