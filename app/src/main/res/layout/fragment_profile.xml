@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:backgroundTint="@color/white"
     tools:context=".ui.fragments.ProfileFragment">
@@ -28,5 +28,149 @@
             android:textSize="24sp" />
     </androidx.appcompat.widget.Toolbar>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/rounded_card"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileToolbar">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:src="@drawable/new_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/edit_text_drawable"
+        android:hint="Name"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileImage">
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/edit_text_drawable"
+        android:hint="Emp ID"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name">
+
+        <EditText
+            android:id="@+id/edtID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/warehouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/edit_text_drawable"
+        android:hint="Warehouse"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ID">
+
+        <EditText
+            android:id="@+id/edtWarehouse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/edit_text_drawable"
+        android:hint="Email ID"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/warehouse">
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/app_name"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="18sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logoutBtn"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35sp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Log Out"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
