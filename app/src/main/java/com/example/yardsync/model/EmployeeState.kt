@@ -1,4 +1,4 @@
-package com.example.yardsync.data.model
+package com.example.yardsync.model
 
 sealed class EmployeeState {
     object Loading : EmployeeState()

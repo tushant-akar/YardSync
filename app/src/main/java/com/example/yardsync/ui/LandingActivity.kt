@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.yardsync.R
-import com.example.yardsync.data.model.EmployeeState
+import com.example.yardsync.model.EmployeeState
 import com.example.yardsync.databinding.ActivityLandingBinding
 import com.example.yardsync.viewModel.AuthViewModel
 import kotlinx.coroutines.launch

@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.yardsync.R
-import com.example.yardsync.data.model.Vehicle
+import com.example.yardsync.model.Vehicle
 import com.example.yardsync.databinding.ExpandableCardItemBinding
 
 class RecordsAdapter(

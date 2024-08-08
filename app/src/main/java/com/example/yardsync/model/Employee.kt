@@ -1,4 +1,4 @@
-package com.example.yardsync.data.model
+package com.example.yardsync.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.yardsync.data.model.Employee
-import com.example.yardsync.data.model.EmployeeState
+import com.example.yardsync.model.Employee
+import com.example.yardsync.model.EmployeeState
 import com.example.yardsync.utils.DataStoreManager
 import com.example.yardsync.utils.Supabase.client
 import io.github.jan.supabase.gotrue.auth
