@@ -39,7 +39,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.yardsync.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_landingActivity"
+            app:destination="@id/landingActivity" />
+    </fragment>
     <activity
         android:id="@+id/incomingActivity"
         android:name="com.example.yardsync.ui.IncomingActivity"
@@ -50,4 +54,9 @@
         android:name="com.example.yardsync.ui.OutgoingActivity"
         android:label="activity_outgoing"
         tools:layout="@layout/activity_outgoing" />
+    <activity
+        android:id="@+id/landingActivity"
+        android:name="com.example.yardsync.ui.LandingActivity"
+        android:label="activity_landing"
+        tools:layout="@layout/activity_landing" />
 </navigation>

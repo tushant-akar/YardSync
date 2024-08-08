@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentProfileBinding
 import com.example.yardsync.viewModel.AuthViewModel
 import kotlinx.coroutines.launch
@@ -26,6 +28,7 @@ class ProfileFragment : Fragment() {
 
         binding.logoutBtn.setOnClickListener {
             viewModel.logout()
+            findNavController().navigate(R.id.action_profileFragment_to_landingActivity)
         }
         return binding.root
     }

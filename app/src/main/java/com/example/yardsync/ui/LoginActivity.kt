@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             is EmployeeState.Error -> {
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, (employeeState.value as EmployeeState.Error).message, Toast.LENGTH_SHORT).show()
             }
 
             else -> {}

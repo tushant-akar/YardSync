@@ -50,19 +50,28 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.androidx.ui.unit.android)
+    implementation(libs.androidx.compose.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     //Gif View
     implementation(libs.android.gif.drawable)
+
     //Custom Bottom Navigation Bar
     implementation(libs.curved.bottom.navigation)
+
     //Supabase
     implementation(libs.postgrest.kt)
     implementation(libs.gotrue.kt)
     implementation(libs.storage.kt)
     implementation(libs.ktor.client.android)
+
     //Datastore
     implementation(libs.androidx.datastore.preferences)
+
+    //Coil
+    implementation(libs.coil)
 }
