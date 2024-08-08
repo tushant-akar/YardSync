@@ -1,7 +1,6 @@
 package com.example.yardsync.viewModel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.yardsync.data.model.Vehicle

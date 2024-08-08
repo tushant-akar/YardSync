@@ -19,7 +19,7 @@ class RecordsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRecordsBinding.inflate(inflater, container, false)
         recordsViewModel = RecordsViewModel()
         return binding.root

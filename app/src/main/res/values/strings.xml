@@ -6,4 +6,11 @@
     <string name="fragment_scan">Scan</string>
     <string name="fragment_records">Records</string>
     <string name="fragment_profile">Profile</string>
+    <string name="records">Records</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="emp_id">Emp ID</string>
+    <string name="warehouse">Warehouse</string>
+    <string name="email_id">Email ID</string>
+    <string name="log_out">Log Out</string>
 </resources>
