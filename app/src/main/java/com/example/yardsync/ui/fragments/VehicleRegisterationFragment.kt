@@ -28,7 +28,6 @@ class VehicleRegisterationFragment : Fragment() {
     private lateinit var persons: String
     private lateinit var incomingWeight: String
     private var vehicleImageUri: Uri? = null
-    private lateinit var vehicleID: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +38,11 @@ class VehicleRegisterationFragment : Fragment() {
         binding.uploadBtn.setOnClickListener {
             pickImage.launch("image/*")
         }
+
+        val description = arrayOf("Vehicle", "Driver", "Checking In")
+        binding.stateProgressBar.setStateDescriptionData(description)
+        binding.stateProgressBar.setStateDescriptionTypeface("fonts/nunito_medium.ttf")
+        binding.stateProgressBar.setStateNumberTypeface("fonts/nunito_medium.ttf")
 
         binding.continueBtn.setOnClickListener {
             vehicleNumber = binding.edtVehicleNumber.text.toString().trim()
@@ -55,7 +59,7 @@ class VehicleRegisterationFragment : Fragment() {
                 uploadData()
                 val action =
                     VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
-                        vehicleID
+                        vehicleNumber
                     )
                 findNavController().navigate(action)
             }
@@ -88,12 +92,7 @@ class VehicleRegisterationFragment : Fragment() {
             incomingWeight = incomingWeight.toInt(),
             accompaniedPersons = persons.toInt()
         )
-        client.from("vehicle").upsert(vehicle)
-        vehicleID = client.from("vehicle").select(columns = Columns.raw("id")) {
-            filter {
-                eq("vehicleNumber", vehicleNumber)
-            }
-        }.decodeSingle()
+        client.from("vehicle").insert(vehicle)
     }
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->

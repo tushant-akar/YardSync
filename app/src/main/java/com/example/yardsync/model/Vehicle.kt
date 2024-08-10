@@ -1,8 +1,8 @@
 package com.example.yardsync.model
 
-import kotlinx.datetime.LocalTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.time.LocalTime
 import java.util.UUID
 
 @Serializable
@@ -18,9 +18,9 @@ data class Vehicle (
     @SerialName("outgoing_weight")
     val outgoingWeight: Int? = null,
     @SerialName("time_in")
-    val timeIn: LocalTime? = null,
+    val timeIn: String? = null,
     @SerialName("time_out")
-    val timeOut: LocalTime? = null,
+    val timeOut: String? = null,
     @SerialName("persons")
     val accompaniedPersons: Int,
     @SerialName("qr_code")

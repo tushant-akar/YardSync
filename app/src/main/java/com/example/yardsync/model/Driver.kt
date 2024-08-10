@@ -2,11 +2,12 @@ package com.example.yardsync.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.util.UUID
 
 @Serializable
 data class Driver(
     @SerialName("id")
-    val id: String,
+    val id: String = UUID.randomUUID().toString(),
     @SerialName("driver_id")
     val driverID: String,
     @SerialName("name")

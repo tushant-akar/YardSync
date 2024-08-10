@@ -146,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@id/driverID">
 
         <EditText
-            android:id="@+id/edtWarehouse"
+            android:id="@+id/edtLicense"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
@@ -171,7 +171,7 @@
         app:prefixTextColor="@color/headlineText">
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
