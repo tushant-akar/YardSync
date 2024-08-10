@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("plugin.serialization") version "1.9.0"
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -74,4 +75,16 @@ dependencies {
 
     //Coil
     implementation(libs.coil)
+
+    //CarouselView
+    implementation(libs.carouselview)
+
+    //State Progress
+    implementation(libs.stateprogressbar.v009)
+
+    //Custom Spinner
+    implementation(libs.dropsy)
+
+    //Safe Args
+    implementation(libs.androidx.navigation.safe.args.gradle.plugin)
 }

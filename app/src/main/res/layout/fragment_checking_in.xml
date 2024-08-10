@@ -1,14 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     tools:context=".ui.fragments.CheckingInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/state_progress_bar_drawable"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/state_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_checkStateCompleted="true"
+            app:spb_currentStateDescriptionColor="@color/headlineText"
+            app:spb_currentStateNumber="three"
+            app:spb_descriptionTopSpaceIncrementer="5dp"
+            app:spb_maxStateNumber="three"
+            app:spb_stateBackgroundColor="@color/grey"
+            app:spb_stateDescriptionColor="@color/grey"
+            app:spb_stateDescriptionSize="12dp"
+            app:spb_stateForegroundColor="@color/themeColorDark"
+            app:spb_stateNumberBackgroundColor="@color/headlineText"
+            app:spb_stateNumberForegroundColor="@color/white"
+            app:spb_stateSize="30dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/timeIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:hint="Vehicle Time-In"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView">
+
+        <EditText
+            android:id="@+id/edtTimeIn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:allowClickWhenDisabled="true"
+            android:enabled="false"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.qandeelabbassi.dropsy.DropDownView
+        android:id="@+id/objective"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dropsyElevation="0dp"
+        android:background="@drawable/edit_text_drawable"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="10dp"
+        app:dropsyItems="@array/dropdown_items"
+        app:dropsyLabel="Objective:"
+        app:dropsySelector="@color/dropsy_selector"
+        app:dropsyLabelColor="@color/headlineText"
+        app:dropsyValueColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeIn"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueBtn"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Continue"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="@color/white"
+        android:elevation="25dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Cancel"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/headlineText"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/continueBtn"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

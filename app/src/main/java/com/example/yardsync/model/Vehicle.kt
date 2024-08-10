@@ -18,21 +18,25 @@ data class Vehicle (
     @SerialName("outgoing_weight")
     val outgoingWeight: Int? = null,
     @SerialName("time_in")
-    val timeIn: LocalTime,
+    val timeIn: LocalTime? = null,
     @SerialName("time_out")
     val timeOut: LocalTime? = null,
     @SerialName("persons")
     val accompaniedPersons: Int,
     @SerialName("qr_code")
-    val qrCode: String,
+    val qrCode: String? = null,
     @SerialName("objective")
-    val objective: Int,
+    val objective: Int? = null,
     @SerialName("dock_no")
-    val dockNo: Int,
+    val dockNo: Int? = null,
     @SerialName("parking_lot")
-    val parkingLot: String,
+    val parkingLot: String? = null,
     @SerialName("vehicle_image")
     val vehicleImageUrl: String,
     @SerialName("driver_id")
-    val driverID: String
+    val driverID: String? = null,
+    @SerialName("origin")
+    val origin: String? = null,
+    @SerialName("destination")
+    val destination: String? = null,
 )

@@ -1,14 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     tools:context=".ui.fragments.VehicleRegisterationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/state_progress_bar_drawable"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/state_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_checkStateCompleted="true"
+            app:spb_currentStateDescriptionColor="@color/headlineText"
+            app:spb_currentStateNumber="one"
+            app:spb_descriptionTopSpaceIncrementer="5dp"
+            app:spb_maxStateNumber="three"
+            app:spb_stateBackgroundColor="@color/grey"
+            app:spb_stateDescriptionColor="@color/grey"
+            app:spb_stateDescriptionSize="12dp"
+            app:spb_stateForegroundColor="@color/themeColorDark"
+            app:spb_stateNumberBackgroundColor="@color/headlineText"
+            app:spb_stateNumberForegroundColor="@color/white"
+            app:spb_stateSize="30dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/vehicleImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
+
+    <ImageButton
+        android:id="@+id/uploadBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="135dp"
+        android:background="@drawable/round_shape"
+        android:backgroundTint="@color/themeColorLight"
+        android:src="@drawable/upload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:tint="@color/white"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vehicleNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:hint="Vehicle Number"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vehicleImage">
+
+        <EditText
+            android:id="@+id/edtVehicleNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vehicleType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:hint="Vehicle Type"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vehicleNumber">
+
+        <EditText
+            android:id="@+id/edtVehicletype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/incomingWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:hint="Weight (in kg)"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vehicleType">
+
+        <EditText
+            android:id="@+id/edtIncomingWeight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/persons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:hint="Accompanied Persons"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/themeColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/incomingWeight">
+
+        <EditText
+            android:id="@+id/edtPersons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueBtn"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35sp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Continue"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/persons" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35sp"
+        android:elevation="25dp"
+        android:fontFamily="@font/nunito_bold"
+        android:backgroundTint="@color/white"
+        android:text="Cancel"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/headlineText"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@id/continueBtn"
+        app:layout_constraintTop_toBottomOf="@id/persons" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

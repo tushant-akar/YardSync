@@ -13,4 +13,9 @@
     <string name="warehouse">Warehouse</string>
     <string name="email_id">Email ID</string>
     <string name="log_out">Log Out</string>
+    <string-array name="dropdown_items">
+        <item>Loading</item>
+        <item>Unloading</item>
+        <item>Both</item>
+    </string-array>
 </resources>

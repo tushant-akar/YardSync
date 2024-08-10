@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/incoming_nav_graph"
+    app:startDestination="@id/vehicleRegisterationFragment">
+
+    <fragment
+        android:id="@+id/vehicleRegisterationFragment"
+        android:name="com.example.yardsync.ui.fragments.VehicleRegisterationFragment"
+        android:label="fragment_vehicle_registeration"
+        tools:layout="@layout/fragment_vehicle_registeration">
+        <action
+            android:id="@+id/action_vehicleRegisterationFragment_to_driverRegisterationFragment"
+            app:destination="@id/driverRegisterationFragment" />
+        <action
+            android:id="@+id/action_vehicleRegisterationFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/driverRegisterationFragment"
+        android:name="com.example.yardsync.ui.fragments.DriverRegisterationFragment"
+        android:label="fragment_driver_registeration"
+        tools:layout="@layout/fragment_driver_registeration">
+        <action
+            android:id="@+id/action_driverRegisterationFragment_to_checkingInFragment"
+            app:destination="@id/checkingInFragment" />
+        <argument
+            android:name="id"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_driverRegisterationFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkingInFragment"
+        android:name="com.example.yardsync.ui.fragments.CheckingInFragment"
+        android:label="fragment_checking_in"
+        tools:layout="@layout/fragment_checking_in">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_checkingInFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.yardsync.ui.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
