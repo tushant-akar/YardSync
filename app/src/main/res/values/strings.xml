@@ -13,6 +13,12 @@
     <string name="warehouse">Warehouse</string>
     <string name="email_id">Email ID</string>
     <string name="log_out">Log Out</string>
+    <string name="cancel">Cancel</string>
+    <string name="continue_text">Continue</string>
+    <string name="destination">Destination</string>
+    <string name="outgoing_weight">Outgoing Weight</string>
+    <string name="origin">Origin</string>
+    <string name="time_out">Time Out</string>
     <string-array name="dropdown_items">
         <item>Loading</item>
         <item>Unloading</item>
