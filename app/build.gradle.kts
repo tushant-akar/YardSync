@@ -87,4 +87,10 @@ dependencies {
 
     //Safe Args
     implementation(libs.androidx.navigation.safe.args.gradle.plugin)
+
+    //QR Code Scanner
+    implementation(libs.code.scanner)
+
+    //QR Code Generator
+    implementation(libs.qrcode.kotlin)
 }
