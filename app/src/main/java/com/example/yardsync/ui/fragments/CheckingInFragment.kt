@@ -66,6 +66,12 @@ class CheckingInFragment : Fragment() {
             }
             lifecycleScope.launch {
                 uploadData()
+                val action = CheckingInFragmentDirections.actionCheckingInFragmentToVehicleQRFragment(
+                    vehicleNumber = vehicleNumber,
+                    ParkingLot = parkingLot,
+                    DockNo = dockNo
+                )
+                findNavController().navigate(action)
             }
         }
 

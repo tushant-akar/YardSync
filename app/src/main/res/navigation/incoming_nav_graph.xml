@@ -46,10 +46,31 @@
         <action
             android:id="@+id/action_checkingInFragment_to_mainActivity"
             app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_checkingInFragment_to_vehicleQRFragment"
+            app:destination="@id/vehicleQRFragment" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.yardsync.ui.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/vehicleQRFragment"
+        android:name="com.example.yardsync.ui.fragments.VehicleQRFragment"
+        android:label="fragment_vehicle_q_r"
+        tools:layout="@layout/fragment_vehicle_q_r" >
+        <action
+            android:id="@+id/action_vehicleQRFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <argument
+            android:name="vehicleNumber"
+            app:argType="string" />
+        <argument
+            android:name="ParkingLot"
+            app:argType="string" />
+        <argument
+            android:name="DockNo"
+            app:argType="integer" />
+    </fragment>
 </navigation>

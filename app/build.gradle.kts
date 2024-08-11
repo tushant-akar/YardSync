@@ -92,5 +92,5 @@ dependencies {
     implementation(libs.code.scanner)
 
     //QR Code Generator
-    implementation(libs.qrcode.kotlin)
+    implementation(libs.custom.qr.generator)
 }

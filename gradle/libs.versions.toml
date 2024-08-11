@@ -5,6 +5,7 @@ carouselview = "1.2.2"
 codeScanner = "2.3.0"
 coil = "2.7.0"
 curved_bottom_navigation = "0.6.5"
+customQrGenerator = "2.0.0-alpha01"
 datastorePreferences = "1.1.1"
 dropsy = "1.1"
 kotlin = "1.9.0"
@@ -35,6 +36,7 @@ carouselview = { module = "com.github.jama5262:CarouselView", version.ref = "car
 code-scanner = { module = "com.github.yuriy-budiyev:code-scanner", version.ref = "codeScanner" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 curved_bottom_navigation = { module = "np.com.susanthapa:curved_bottom_navigation", version.ref = "curved_bottom_navigation" }
+custom-qr-generator = { module = "com.github.alexzhirkevich:custom-qr-generator", version.ref = "customQrGenerator" }
 dropsy = { module = "com.github.qandeelabbassi:Dropsy", version.ref = "dropsy" }
 gotrue-kt = { module = "io.github.jan-tennert.supabase:gotrue-kt", version.ref = "storageKt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

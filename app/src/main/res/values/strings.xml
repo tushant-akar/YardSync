@@ -19,6 +19,8 @@
     <string name="outgoing_weight">Outgoing Weight</string>
     <string name="origin">Origin</string>
     <string name="time_out">Time Out</string>
+    <string name="home">Home</string>
+    <string name="print">Print</string>
     <string-array name="dropdown_items">
         <item>Loading</item>
         <item>Unloading</item>
