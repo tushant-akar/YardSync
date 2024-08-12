@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentCheckingInBinding
+import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.launch
@@ -60,17 +61,20 @@ class CheckingInFragment : Fragment() {
 
         binding.continueBtn.setOnClickListener {
             inTime = binding.edtTimeIn.text.toString()
-            if(inTime.isEmpty() || !binding.objective.isChecked) {
-                Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
+            if (inTime.isEmpty() || !binding.objective.isChecked) {
+                Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
             lifecycleScope.launch {
                 uploadData()
-                val action = CheckingInFragmentDirections.actionCheckingInFragmentToVehicleQRFragment(
-                    vehicleNumber = vehicleNumber,
-                    ParkingLot = parkingLot,
-                    DockNo = dockNo
-                )
+                uploadVehicleStatus()
+                val action =
+                    CheckingInFragmentDirections.actionCheckingInFragmentToVehicleQRFragment(
+                        vehicleNumber = vehicleNumber,
+                        ParkingLot = parkingLot,
+                        DockNo = dockNo
+                    )
                 findNavController().navigate(action)
             }
         }
@@ -97,6 +101,15 @@ class CheckingInFragment : Fragment() {
                 }
             }
         Toast.makeText(requireContext(), "Data Uploaded Successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    private suspend fun uploadVehicleStatus() {
+        val vehicleStatus = VehicleStatus(
+            vehicleNo = vehicleNumber,
+            totalStep = if (objective == 2) 8 else 6,
+        )
+        client.from("vehicle_status")
+            .insert(vehicleStatus)
     }
 
     override fun onDestroyView() {

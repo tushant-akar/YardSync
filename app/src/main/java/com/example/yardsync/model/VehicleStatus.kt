@@ -10,10 +10,8 @@ data class VehicleStatus(
     val id: String = UUID.randomUUID().toString(),
     @SerialName("vehicle_no")
     val vehicleNo: String,
-    @SerialName("status")
-    val status: String,
     @SerialName("total_step")
     val totalStep: Int,
     @SerialName("current_step")
-    val currentStep: Int,
+    val currentStep: Int = 0,
 )
