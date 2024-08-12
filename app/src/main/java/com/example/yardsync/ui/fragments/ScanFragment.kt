@@ -87,7 +87,7 @@ class ScanFragment : Fragment() {
             dialogBinding.selectTime.setOnClickListener {
                 picker.show(parentFragmentManager, "ScanFragment")
                 picker.addOnPositiveButtonClickListener {
-                    dialogBinding.selectTime.text = "${picker.hour}:${picker.minute}"
+                    dialogBinding.selectTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
                 }
             }
             dialogBinding.okBtn.setOnClickListener {

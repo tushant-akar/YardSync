@@ -94,7 +94,7 @@
         android:layout_width="130dp"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="425dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/nunito_bold"
         android:text="Continue"
@@ -103,14 +103,14 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/objective" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancelBtn"
         android:layout_width="130dp"
         android:layout_height="48dp"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="425dp"
         android:backgroundTint="@color/white"
         android:elevation="25dp"
         android:fontFamily="@font/nunito_bold"
@@ -120,7 +120,7 @@
         android:textColor="@color/headlineText"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/continueBtn"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/objective" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

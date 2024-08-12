@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentVehicleRegisterationBinding
 import com.example.yardsync.model.Vehicle
+import com.example.yardsync.model.VehicleNavArgs
 import kotlinx.coroutines.launch
 
 class VehicleRegisterationFragment : Fragment() {
@@ -51,7 +53,7 @@ class VehicleRegisterationFragment : Fragment() {
                 return@setOnClickListener
             }
             lifecycleScope.launch {
-                val vehicle = Vehicle(
+                val vehicle = VehicleNavArgs(
                     vehicleNumber = vehicleNumber,
                     vehicleType = vehicleType,
                     incomingWeight = incomingWeight.toInt(),
@@ -60,7 +62,7 @@ class VehicleRegisterationFragment : Fragment() {
                 val action =
                     VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
                         vehicle = vehicle,
-                        vehicleImageUri = vehicleImageUri
+                        vehicleImageUri = vehicleImageUri.toString()
                     )
                 findNavController().navigate(action)
             }

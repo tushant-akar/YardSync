@@ -22,6 +22,10 @@
     <string name="home">Home</string>
     <string name="print">Print</string>
     <string name="vehicle_registration">Vehicle Registration</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="login_with_your_credentials_to_get_started">Login with your credentials to get started!</string>
+    <string name="email">Email</string>
     <string-array name="dropdown_items">
         <item>Loading</item>
         <item>Unloading</item>

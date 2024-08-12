@@ -11,6 +11,7 @@ import android.print.PrintAttributes
 import android.print.PrintDocumentAdapter
 import android.print.PrintDocumentInfo
 import android.print.PrintManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -127,8 +128,10 @@ class VehicleQRFragment : Fragment() {
             )
             .build()
 
-        val drawable = QrCodeDrawable(data, options)
+        Log.d("QR", "Generating QR Code")
 
+        val drawable = QrCodeDrawable(data, options)
+        Log.d("QR", "QR Code Generated")
         return drawable
     }
 

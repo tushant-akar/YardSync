@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentCheckingInBinding
 import com.example.yardsync.model.Vehicle
+import com.example.yardsync.model.VehicleNavArgs
 import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -26,7 +28,7 @@ class CheckingInFragment : Fragment() {
     private var _binding: FragmentCheckingInBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<CheckingInFragmentArgs>()
-    private lateinit var vehicle: Vehicle
+    private lateinit var vehicle: VehicleNavArgs
     private lateinit var vehicleImageUri: Uri
     private lateinit var inTime: String
     private val dockNo: Int = (0..4).random()
@@ -49,17 +51,20 @@ class CheckingInFragment : Fragment() {
         binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
         binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
 
+
         vehicle = args.vehicle
-        vehicleImageUri = args.vehicleImageUri
+        vehicleImageUri = args.vehicleImageUri.toUri()
 
         val picker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_24H)
             .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
             .build()
 
-        binding.timeIn.setOnClickListener {
+        binding.edtTimeIn.setOnClickListener {
             picker.show(parentFragmentManager, "CheckInFragment")
-            binding.edtTimeIn.setText("${picker.hour}:${picker.minute}")
+            picker.addOnPositiveButtonClickListener {
+                binding.edtTimeIn.setText(String.format("%02d:%02d", picker.hour, picker.minute))
+            }
         }
 
         binding.objective.setItemClickListener { i, item ->
@@ -72,7 +77,7 @@ class CheckingInFragment : Fragment() {
 
         binding.continueBtn.setOnClickListener {
             inTime = binding.edtTimeIn.text.toString()
-            if (inTime.isEmpty() || !binding.objective.isChecked) {
+            if (inTime.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener

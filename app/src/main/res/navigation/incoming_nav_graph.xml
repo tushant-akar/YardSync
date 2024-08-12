@@ -29,11 +29,11 @@
             android:id="@+id/action_driverRegisterationFragment_to_mainActivity"
             app:destination="@id/mainActivity" />
         <argument
-            android:name="vehicle"
-            app:argType="com.example.yardsync.model.Vehicle"/>
-        <argument
             android:name="vehicleImageUri"
-            app:argType="Uri"/>
+            app:argType="string" />
+        <argument
+            android:name="vehicle"
+            app:argType="com.example.yardsync.model.VehicleNavArgs" />
     </fragment>
     <fragment
         android:id="@+id/checkingInFragment"
@@ -48,10 +48,10 @@
             app:destination="@id/vehicleQRFragment" />
         <argument
             android:name="vehicle"
-            app:argType="com.example.yardsync.model.Vehicle"/>
+            app:argType="com.example.yardsync.model.VehicleNavArgs" />
         <argument
             android:name="vehicleImageUri"
-            app:argType="Uri"/>
+            app:argType="string" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -62,7 +62,7 @@
         android:id="@+id/vehicleQRFragment"
         android:name="com.example.yardsync.ui.fragments.VehicleQRFragment"
         android:label="fragment_vehicle_q_r"
-        tools:layout="@layout/fragment_vehicle_q_r" >
+        tools:layout="@layout/fragment_vehicle_q_r">
         <action
             android:id="@+id/action_vehicleQRFragment_to_mainActivity"
             app:destination="@id/mainActivity" />

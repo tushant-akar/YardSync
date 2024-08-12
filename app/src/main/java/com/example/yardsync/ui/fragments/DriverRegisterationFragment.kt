@@ -14,7 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentDriverRegisterationBinding
 import com.example.yardsync.model.Driver
-import com.example.yardsync.model.Vehicle
+import com.example.yardsync.model.VehicleNavArgs
 import com.example.yardsync.utils.Supabase.client
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.storage.storage
@@ -30,8 +30,8 @@ class DriverRegisterationFragment : Fragment() {
     private lateinit var driverLicense: String
     private lateinit var driverPhone: String
     private var driverImageUri: Uri? = null
-    private lateinit var vehicle: Vehicle
-    private lateinit var vehicleImageUri: Uri
+    private lateinit var vehicle: VehicleNavArgs
+    private lateinit var vehicleImageUri: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,7 +68,7 @@ class DriverRegisterationFragment : Fragment() {
             }
             lifecycleScope.launch {
                 uploadData()
-                val updatedVehicle = Vehicle(
+                val updatedVehicle = VehicleNavArgs(
                     vehicleNumber = vehicle.vehicleNumber,
                     vehicleType = vehicle.vehicleType,
                     incomingWeight = vehicle.incomingWeight,
