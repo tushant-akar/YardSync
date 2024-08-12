@@ -13,11 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentVehicleRegisterationBinding
 import com.example.yardsync.model.Vehicle
-import com.example.yardsync.utils.Supabase.client
-import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.query.Columns
-import io.github.jan.supabase.storage.storage
-import io.github.jan.supabase.storage.upload
 import kotlinx.coroutines.launch
 
 class VehicleRegisterationFragment : Fragment() {
@@ -41,8 +36,8 @@ class VehicleRegisterationFragment : Fragment() {
 
         val description = arrayOf("Vehicle", "Driver", "Checking In")
         binding.stateProgressBar.setStateDescriptionData(description)
-        binding.stateProgressBar.setStateDescriptionTypeface("fonts/nunito_medium.ttf")
-        binding.stateProgressBar.setStateNumberTypeface("fonts/nunito_medium.ttf")
+        binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
+        binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
 
         binding.continueBtn.setOnClickListener {
             vehicleNumber = binding.edtVehicleNumber.text.toString().trim()
@@ -56,10 +51,16 @@ class VehicleRegisterationFragment : Fragment() {
                 return@setOnClickListener
             }
             lifecycleScope.launch {
-                uploadData()
+                val vehicle = Vehicle(
+                    vehicleNumber = vehicleNumber,
+                    vehicleType = vehicleType,
+                    incomingWeight = incomingWeight.toInt(),
+                    accompaniedPersons = persons.toInt()
+                )
                 val action =
                     VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
-                        vehicleNumber
+                        vehicle = vehicle,
+                        vehicleImageUri = vehicleImageUri
                     )
                 findNavController().navigate(action)
             }
@@ -72,7 +73,7 @@ class VehicleRegisterationFragment : Fragment() {
         return binding.root
     }
 
-    private suspend fun uploadData() {
+    /* private suspend fun uploadData() {
         var imageUrl: String? = null
 
         if (vehicleImageUri != null) {
@@ -82,8 +83,11 @@ class VehicleRegisterationFragment : Fragment() {
                     "_"
                 )
             }.jpg"
+            Log.d("registeration","Image Path Created: ${imagePath}")
             client.storage.from("vehicle_image").upload(imagePath, vehicleImageUri!!)
+            Log.d("registeration","Stored")
             imageUrl = client.storage.from("vehicle_image").publicUrl(imagePath)
+            Log.d("registeration", "Image URL Saved")
         }
         val vehicle = Vehicle(
             vehicleNumber = vehicleNumber,
@@ -93,7 +97,7 @@ class VehicleRegisterationFragment : Fragment() {
             accompaniedPersons = persons.toInt()
         )
         client.from("vehicle").insert(vehicle)
-    }
+    }*/
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         vehicleImageUri = uri

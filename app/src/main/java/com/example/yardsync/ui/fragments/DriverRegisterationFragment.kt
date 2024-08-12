@@ -2,12 +2,12 @@ package com.example.yardsync.ui.fragments
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,7 +17,6 @@ import com.example.yardsync.model.Driver
 import com.example.yardsync.model.Vehicle
 import com.example.yardsync.utils.Supabase.client
 import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.storage.storage
 import io.github.jan.supabase.storage.upload
 import kotlinx.coroutines.launch
@@ -31,7 +30,8 @@ class DriverRegisterationFragment : Fragment() {
     private lateinit var driverLicense: String
     private lateinit var driverPhone: String
     private var driverImageUri: Uri? = null
-    private lateinit var vehicleNumber: String
+    private lateinit var vehicle: Vehicle
+    private lateinit var vehicleImageUri: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +43,13 @@ class DriverRegisterationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vehicleNumber = args.id
+        vehicle = args.vehicle
+        vehicleImageUri = args.vehicleImageUri
 
         val description = arrayOf("Vehicle", "Driver", "Checking In")
         binding.stateProgressBar.setStateDescriptionData(description)
-        binding.stateProgressBar.setStateDescriptionTypeface("fonts/nunito_medium.ttf")
-        binding.stateProgressBar.setStateNumberTypeface("fonts/nunito_medium.ttf")
+        binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
+        binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
 
         binding.uploadBtn.setOnClickListener {
             pickImage.launch("image/*")
@@ -61,15 +62,24 @@ class DriverRegisterationFragment : Fragment() {
             driverPhone = binding.edtPhone.text.toString().trim()
 
             if (driverID.isEmpty() || driverName.isEmpty() || driverLicense.isEmpty() || driverPhone.isEmpty() || binding.driverImage.drawable == null) {
-                Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
             lifecycleScope.launch {
                 uploadData()
-                val action = DriverRegisterationFragmentDirections.actionDriverRegisterationFragmentToCheckingInFragment(
-                    id = vehicleNumber,
-                    driverId = driverID
+                val updatedVehicle = Vehicle(
+                    vehicleNumber = vehicle.vehicleNumber,
+                    vehicleType = vehicle.vehicleType,
+                    incomingWeight = vehicle.incomingWeight,
+                    accompaniedPersons = vehicle.accompaniedPersons,
+                    driverID = driverID
                 )
+                val action =
+                    DriverRegisterationFragmentDirections.actionDriverRegisterationFragmentToCheckingInFragment(
+                        vehicle = updatedVehicle,
+                        vehicleImageUri = vehicleImageUri
+                    )
                 findNavController().navigate(action)
             }
         }

@@ -85,9 +85,6 @@ dependencies {
     //Custom Spinner
     implementation(libs.dropsy)
 
-    //Safe Args
-    implementation(libs.androidx.navigation.safe.args.gradle.plugin)
-
     //QR Code Scanner
     implementation(libs.code.scanner)
 

@@ -1,5 +1,6 @@
 package com.example.yardsync.ui.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,18 +12,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentCheckingInBinding
+import com.example.yardsync.model.Vehicle
 import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import io.github.jan.supabase.postgrest.from
+import io.github.jan.supabase.storage.storage
+import io.github.jan.supabase.storage.upload
 import kotlinx.coroutines.launch
-import java.time.LocalTime
 
 class CheckingInFragment : Fragment() {
     private var _binding: FragmentCheckingInBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<CheckingInFragmentArgs>()
-    private lateinit var vehicleNumber: String
-    private lateinit var driverID: String
+    private lateinit var vehicle: Vehicle
+    private lateinit var vehicleImageUri: Uri
     private lateinit var inTime: String
     private val dockNo: Int = (0..4).random()
     private val parkingLot: String = "A"
@@ -41,20 +46,26 @@ class CheckingInFragment : Fragment() {
 
         val description = arrayOf("Vehicle", "Driver", "Checking In")
         binding.stateProgressBar.setStateDescriptionData(description)
-        binding.stateProgressBar.setStateDescriptionTypeface("fonts/nunito_medium.ttf")
-        binding.stateProgressBar.setStateNumberTypeface("fonts/nunito_medium.ttf")
+        binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
+        binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
 
-        driverID = args.driverId
-        vehicleNumber = args.id
+        vehicle = args.vehicle
+        vehicleImageUri = args.vehicleImageUri
+
+        val picker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+            .build()
 
         binding.timeIn.setOnClickListener {
-            binding.edtTimeIn.setText(LocalTime.now().toString())
+            picker.show(parentFragmentManager, "CheckInFragment")
+            binding.edtTimeIn.setText("${picker.hour}:${picker.minute}")
         }
 
         binding.objective.setItemClickListener { i, item ->
             objective = when (item.text) {
                 "Loading" -> 0
-                "Unloading" -> 0
+                "Unloading" -> 1
                 else -> 2
             }
         }
@@ -71,7 +82,7 @@ class CheckingInFragment : Fragment() {
                 uploadVehicleStatus()
                 val action =
                     CheckingInFragmentDirections.actionCheckingInFragmentToVehicleQRFragment(
-                        vehicleNumber = vehicleNumber,
+                        vehicleNumber = vehicle.vehicleNumber,
                         ParkingLot = parkingLot,
                         DockNo = dockNo
                     )
@@ -85,27 +96,36 @@ class CheckingInFragment : Fragment() {
     }
 
     private suspend fun uploadData() {
-        client.from("vehicle")
-            .update(
-                mapOf(
-                    "driver_id" to driverID,
-                    "time_in" to inTime,
-                    "dock_no" to dockNo,
-                    "parking_lot" to parkingLot,
-                    "objective" to objective
-                )
+        var imageUrl: String? = null
 
-            ) {
-                filter {
-                    eq("vehicle_number", vehicleNumber)
-                }
-            }
+        val imagePath = "vehicle_image/${System.currentTimeMillis()}_${
+            vehicle.vehicleNumber.replace(
+                " ",
+                "_"
+            )
+        }.jpg"
+        client.storage.from("vehicle_image").upload(imagePath, vehicleImageUri)
+        imageUrl = client.storage.from("vehicle_image").publicUrl(imagePath)
+
+        val updatedVehicle = Vehicle(
+            vehicleNumber = vehicle.vehicleNumber,
+            vehicleType = vehicle.vehicleType,
+            incomingWeight = vehicle.incomingWeight,
+            accompaniedPersons = vehicle.accompaniedPersons,
+            driverID = vehicle.driverID,
+            timeIn = inTime,
+            objective = objective,
+            dockNo = dockNo,
+            parkingLot = parkingLot,
+            vehicleImageUrl = imageUrl
+        )
+        client.from("vehicle").insert(updatedVehicle)
         Toast.makeText(requireContext(), "Data Uploaded Successfully", Toast.LENGTH_SHORT).show()
     }
 
     private suspend fun uploadVehicleStatus() {
         val vehicleStatus = VehicleStatus(
-            vehicleNo = vehicleNumber,
+            vehicleNo = vehicle.vehicleNumber,
             totalStep = if (objective == 2) 8 else 6,
         )
         client.from("vehicle_status")

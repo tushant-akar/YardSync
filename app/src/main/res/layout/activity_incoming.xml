@@ -10,6 +10,18 @@
     tools:context=".ui.IncomingActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/demo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/incoming"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -24,7 +36,7 @@
             android:layout_gravity="center_vertical|start"
             android:layout_marginStart="25dp"
             android:fontFamily="@font/nunito_semibold"
-            android:text="Vehicle Registration"
+            android:text="@string/vehicle_registration"
             android:textColor="@color/white"
             android:textSize="24sp" />
     </androidx.appcompat.widget.Toolbar>

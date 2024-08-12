@@ -27,7 +27,7 @@ class IncomingActivity : AppCompatActivity() {
             insets
         }
 
-        setSupportActionBar(binding.incoming)
+        setSupportActionBar(binding.demo)
 
         navController = findNavController(R.id.incoming_host_fragment)
         val appBarConfiguration = AppBarConfiguration(
