@@ -34,7 +34,8 @@ class IncomingActivity : AppCompatActivity() {
             setOf(
                 R.id.vehicleRegisterationFragment,
                 R.id.driverRegisterationFragment,
-                R.id.checkingInFragment
+                R.id.checkingInFragment,
+                R.id.vehicleQRFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

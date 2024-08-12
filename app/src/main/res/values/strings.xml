@@ -16,7 +16,7 @@
     <string name="cancel">Cancel</string>
     <string name="continue_text">Continue</string>
     <string name="destination">Destination</string>
-    <string name="outgoing_weight">Outgoing Weight</string>
+    <string name="outgoing_weight">Outgoing Weight (In kg)</string>
     <string name="origin">Origin</string>
     <string name="time_out">Time Out</string>
     <string name="home">Home</string>
@@ -26,6 +26,8 @@
     <string name="vehicle_number">Vehicle Number</string>
     <string name="login_with_your_credentials_to_get_started">Login with your credentials to get started!</string>
     <string name="email">Email</string>
+    <string name="vehicle_outgoing">Vehicle Outgoing</string>
+    <string name="vehicle_checked_out_successfully">Vehicle Checked Out Successfully!</string>
     <string-array name="dropdown_items">
         <item>Loading</item>
         <item>Unloading</item>

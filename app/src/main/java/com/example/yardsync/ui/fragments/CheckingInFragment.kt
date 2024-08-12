@@ -142,6 +142,7 @@ class CheckingInFragment : Fragment() {
         val vehicleStatus = VehicleStatus(
             vehicleNo = vehicle.vehicleNumber,
             totalStep = if (objective == 2) 8 else 6,
+            currentStep = 0
         )
         try {
             client.from("vehicle_status").insert(vehicleStatus)

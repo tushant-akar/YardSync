@@ -21,7 +21,6 @@ import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.launch
 
 class ScanFragment : Fragment() {
-
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
     private lateinit var codeScanner: CodeScanner

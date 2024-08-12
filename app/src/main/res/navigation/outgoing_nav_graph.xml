@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/outgoing_nav_graph"
+    app:startDestination="@id/vehicleOutgoingQRFragment">
+
+    <fragment
+        android:id="@+id/vehicleOutgoingFragment"
+        android:name="com.example.yardsync.ui.fragments.VehicleOutgoingFragment"
+        android:label="fragment_vehicle_outgoing"
+        tools:layout="@layout/fragment_vehicle_outgoing" >
+        <action
+            android:id="@+id/action_vehicleOutgoingFragment_to_driverOutgoingFragment"
+            app:destination="@id/driverOutgoingFragment" />
+        <argument
+            android:name="vehicleNumber"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_vehicleOutgoingFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <fragment
+        android:id="@+id/driverOutgoingFragment"
+        android:name="com.example.yardsync.ui.fragments.DriverOutgoingFragment"
+        android:label="fragment_driver_outgoing"
+        tools:layout="@layout/fragment_driver_outgoing" >
+        <action
+            android:id="@+id/action_driverOutgoingFragment_to_checkingOutFragment"
+            app:destination="@id/checkingOutFragment" />
+        <argument
+            android:name="driverID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_driverOutgoingFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+        <argument
+            android:name="vehicleID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkingOutFragment"
+        android:name="com.example.yardsync.ui.fragments.CheckingOutFragment"
+        android:label="fragment_checking_out"
+        tools:layout="@layout/fragment_checking_out" >
+        <argument
+            android:name="vehicleID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_checkingOutFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleOutgoingQRFragment"
+        android:name="com.example.yardsync.ui.fragments.VehicleOutgoingQRFragment"
+        android:label="fragment_vehicle_outgoing_q_r"
+        tools:layout="@layout/fragment_vehicle_outgoing_q_r" >
+        <action
+            android:id="@+id/action_vehicleOutgoingQRFragment_to_vehicleOutgoingFragment"
+            app:destination="@id/vehicleOutgoingFragment" />
+        <action
+            android:id="@+id/action_vehicleOutgoingQRFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.yardsync.ui.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>

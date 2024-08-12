@@ -62,10 +62,10 @@
             android:id="@+id/edtOutgoingWeight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/black"
-            android:inputType="number"
             android:autofillHints=""
+            android:fontFamily="@font/nunito_bold"
+            android:inputType="number"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -136,10 +136,10 @@
             android:id="@+id/edtTimeOut"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:enabled="false"
-            android:inputType="text"
             android:allowClickWhenDisabled="true"
+            android:enabled="false"
             android:fontFamily="@font/nunito_bold"
+            android:inputType="text"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>

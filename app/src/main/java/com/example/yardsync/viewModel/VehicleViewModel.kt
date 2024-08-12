@@ -41,4 +41,24 @@ class VehicleViewModel : ViewModel() {
             }
         }
     }
+
+    fun updateVehicleDetails(vehicleNumber: String, timeOut: String, outgoingWeight: Int, origin: String, destination: String, onResult: (Boolean, String?) -> Unit) {
+        viewModelScope.launch {
+            try {
+                client.from("vehicle").update({
+                    set("time_out", timeOut)
+                    set("outgoing_weight", outgoingWeight)
+                    set("origin", origin)
+                    set("destination", destination)
+                }) {
+                    filter {
+                        eq("vehicle_no", vehicleNumber)
+                    }
+                }
+                onResult(true, "Details Updated Successfully!")
+            } catch (e: Exception) {
+                onResult(false, e.message)
+            }
+        }
+    }
 }
