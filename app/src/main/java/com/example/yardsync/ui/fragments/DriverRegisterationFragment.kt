@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentDriverRegisterationBinding
 import com.example.yardsync.model.Driver
@@ -50,6 +51,18 @@ class DriverRegisterationFragment : Fragment() {
         binding.stateProgressBar.setStateDescriptionData(description)
         binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
         binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
+
+        binding.edtID.setText(arguments?.getString("driverID"))
+        binding.edtName.setText(arguments?.getString("driverName"))
+        binding.edtPhone.setText(arguments?.getString("driverPhone"))
+        binding.edtLicense.setText(arguments?.getString("driverLicenseNumber"))
+        binding.driverImage.load(arguments?.getString("driverPhoto")) {
+            crossfade(true)
+        }
+
+        binding.qrCodeBtn.setOnClickListener {
+            findNavController().navigate(R.id.driverQRFragment2)
+        }
 
         binding.uploadBtn.setOnClickListener {
             pickImage.launch("image/*")
@@ -110,7 +123,7 @@ class DriverRegisterationFragment : Fragment() {
             driverPhoto = imageUrl!!,
         )
         try {
-            client.from("driver").insert(driver)
+            client.from("driver").upsert(driver)
         } catch (e: Exception) {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
         }

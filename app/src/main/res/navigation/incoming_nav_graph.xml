@@ -76,4 +76,9 @@
             android:name="DockNo"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/driverQRFragment2"
+        android:name="com.example.yardsync.ui.fragments.DriverQRFragment"
+        android:label="fragment_driver_q_r"
+        tools:layout="@layout/fragment_driver_q_r" />
 </navigation>
