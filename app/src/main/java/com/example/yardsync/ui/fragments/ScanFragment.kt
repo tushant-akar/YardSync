@@ -58,13 +58,9 @@ class ScanFragment : Fragment() {
                 }
             }.decodeSingle<Vehicle>()
 
-            if (vehicle != null) {
-                showDialogBox(vehicle)
-            } else {
-                showToast("QR Code is Wrong")
-            }
+            showDialogBox(vehicle)
         } catch (e: Exception) {
-            showToast("Error: ${e.message}")
+            showToast("${e.message}")
         }
     }
 
@@ -95,6 +91,7 @@ class ScanFragment : Fragment() {
                 }
             }
             dialogBinding.okBtn.setOnClickListener {
+                updateStatus(vehicle, status.currentStep + 1)
                 dialog.dismiss()
             }
         } ?: showToast("No Status Found")
@@ -134,6 +131,24 @@ class ScanFragment : Fragment() {
                 3 -> "Operation Start Time"
                 4 -> "Operation End Time"
                 else -> "Vehicle Dock Out"
+            }
+        }
+    }
+
+    private fun updateStatus(vehicle: Vehicle, currentStep: Int) {
+        lifecycleScope.launch {
+            try {
+                client.from("vehicle_status").update(
+                    {
+                        set("current_step", currentStep)
+                    }
+                ) {
+                    filter {
+                        eq("vehicle_no", vehicle.vehicleNumber)
+                    }
+                }
+            } catch (e: Exception) {
+                showToast("${e.message}")
             }
         }
     }
