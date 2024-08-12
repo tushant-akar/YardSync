@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,6 +18,7 @@ import com.example.yardsync.model.Vehicle
 import com.example.yardsync.model.VehicleNavArgs
 import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
+import com.example.yardsync.viewModel.VehicleViewModel
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import io.github.jan.supabase.postgrest.from
@@ -33,7 +35,8 @@ class CheckingInFragment : Fragment() {
     private lateinit var inTime: String
     private val dockNo: Int = (0..4).random()
     private val parkingLot: String = "A"
-    private var objective: Int = 2
+    private var objective: Int = 0
+    private lateinit var viewModel: VehicleViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,11 +49,12 @@ class CheckingInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this)[VehicleViewModel::class.java]
+
         val description = arrayOf("Vehicle", "Driver", "Checking In")
         binding.stateProgressBar.setStateDescriptionData(description)
         binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
         binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
-
 
         vehicle = args.vehicle
         vehicleImageUri = args.vehicleImageUri.toUri()
@@ -124,8 +128,14 @@ class CheckingInFragment : Fragment() {
             parkingLot = parkingLot,
             vehicleImageUrl = imageUrl
         )
-        client.from("vehicle").insert(updatedVehicle)
-        Toast.makeText(requireContext(), "Data Uploaded Successfully", Toast.LENGTH_SHORT).show()
+        viewModel.uploadVehicleDetails(updatedVehicle) { success, message ->
+            if (success) {
+                Toast.makeText(requireContext(), "Data uploaded Successfully!", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private suspend fun uploadVehicleStatus() {
@@ -133,8 +143,11 @@ class CheckingInFragment : Fragment() {
             vehicleNo = vehicle.vehicleNumber,
             totalStep = if (objective == 2) 8 else 6,
         )
-        client.from("vehicle_status")
-            .insert(vehicleStatus)
+        try {
+            client.from("vehicle_status").insert(vehicleStatus)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "${e.message}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

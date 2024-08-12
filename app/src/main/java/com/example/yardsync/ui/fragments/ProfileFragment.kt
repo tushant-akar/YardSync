@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.yardsync.R
@@ -23,7 +24,7 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        viewModel = AuthViewModel(requireContext())
+        viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         retrieveEmployee()
 
         binding.logoutBtn.setOnClickListener {

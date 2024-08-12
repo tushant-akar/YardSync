@@ -109,7 +109,11 @@ class DriverRegisterationFragment : Fragment() {
             driverPhone = driverPhone,
             driverPhoto = imageUrl!!,
         )
-        client.from("driver").insert(driver)
+        try {
+            client.from("driver").insert(driver)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
 

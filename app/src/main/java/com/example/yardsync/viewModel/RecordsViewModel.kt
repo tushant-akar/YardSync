@@ -19,7 +19,7 @@ class RecordsViewModel: ViewModel() {
         getVehicleRecords()
     }
 
-    fun getVehicleRecords() {
+    private fun getVehicleRecords() {
         viewModelScope.launch {
             try {
                 val fetchedRecords = client.from("vehicle").select().decodeList<Vehicle>()

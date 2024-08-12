@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
-import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentScanBinding
 import com.example.yardsync.databinding.YardDialogBinding
 import com.example.yardsync.model.Vehicle
@@ -57,7 +55,6 @@ class ScanFragment : Fragment() {
                     eq("vehicle_no", vehicleNumber)
                 }
             }.decodeSingle<Vehicle>()
-
             showDialogBox(vehicle)
         } catch (e: Exception) {
             showToast("${e.message}")
@@ -87,7 +84,8 @@ class ScanFragment : Fragment() {
             dialogBinding.selectTime.setOnClickListener {
                 picker.show(parentFragmentManager, "ScanFragment")
                 picker.addOnPositiveButtonClickListener {
-                    dialogBinding.selectTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
+                    dialogBinding.selectTime.text =
+                        String.format("%02d:%02d", picker.hour, picker.minute)
                 }
             }
             dialogBinding.okBtn.setOnClickListener {
@@ -124,6 +122,7 @@ class ScanFragment : Fragment() {
                 6 -> "Loading End Time"
                 else -> "Vehicle Dock Out"
             }
+
             else -> when (status.currentStep) {
                 0 -> "Vehicle Parking In"
                 1 -> "Vehicle Parking Out"

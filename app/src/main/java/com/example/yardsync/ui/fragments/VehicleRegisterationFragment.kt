@@ -52,54 +52,26 @@ class VehicleRegisterationFragment : Fragment() {
                     .show()
                 return@setOnClickListener
             }
-            lifecycleScope.launch {
-                val vehicle = VehicleNavArgs(
-                    vehicleNumber = vehicleNumber,
-                    vehicleType = vehicleType,
-                    incomingWeight = incomingWeight.toInt(),
-                    accompaniedPersons = persons.toInt()
+            val vehicle = VehicleNavArgs(
+                vehicleNumber = vehicleNumber,
+                vehicleType = vehicleType,
+                incomingWeight = incomingWeight.toInt(),
+                accompaniedPersons = persons.toInt()
+            )
+            val action =
+                VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
+                    vehicle = vehicle,
+                    vehicleImageUri = vehicleImageUri.toString()
                 )
-                val action =
-                    VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
-                        vehicle = vehicle,
-                        vehicleImageUri = vehicleImageUri.toString()
-                    )
-                findNavController().navigate(action)
-            }
+            findNavController().navigate(action)
+
         }
 
         binding.cancelBtn.setOnClickListener {
             findNavController().navigate(R.id.action_vehicleRegisterationFragment_to_mainActivity)
         }
-
         return binding.root
     }
-
-    /* private suspend fun uploadData() {
-        var imageUrl: String? = null
-
-        if (vehicleImageUri != null) {
-            val imagePath = "vehicle_image/${System.currentTimeMillis()}_${
-                vehicleNumber.replace(
-                    " ",
-                    "_"
-                )
-            }.jpg"
-            Log.d("registeration","Image Path Created: ${imagePath}")
-            client.storage.from("vehicle_image").upload(imagePath, vehicleImageUri!!)
-            Log.d("registeration","Stored")
-            imageUrl = client.storage.from("vehicle_image").publicUrl(imagePath)
-            Log.d("registeration", "Image URL Saved")
-        }
-        val vehicle = Vehicle(
-            vehicleNumber = vehicleNumber,
-            vehicleType = vehicleType,
-            vehicleImageUrl = imageUrl!!,
-            incomingWeight = incomingWeight.toInt(),
-            accompaniedPersons = persons.toInt()
-        )
-        client.from("vehicle").insert(vehicle)
-    }*/
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         vehicleImageUri = uri
