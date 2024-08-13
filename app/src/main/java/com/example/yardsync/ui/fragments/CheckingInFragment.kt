@@ -2,6 +2,7 @@ package com.example.yardsync.ui.fragments
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import com.google.android.material.timepicker.TimeFormat
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.storage.storage
 import io.github.jan.supabase.storage.upload
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CheckingInFragment : Fragment() {
@@ -88,7 +90,10 @@ class CheckingInFragment : Fragment() {
             }
             lifecycleScope.launch {
                 uploadData()
+                Log.d("CheckingInFragment", "Data uploaded")
+                delay(2000)
                 uploadVehicleStatus()
+                Log.d("CheckingInFragment", "Vehicle status uploaded")
                 val action =
                     CheckingInFragmentDirections.actionCheckingInFragmentToVehicleQRFragment(
                         vehicleNumber = vehicle.vehicleNumber,
@@ -148,6 +153,7 @@ class CheckingInFragment : Fragment() {
             client.from("vehicle_status").insert(vehicleStatus)
         } catch (e: Exception) {
             Toast.makeText(requireContext(), "${e.message}", Toast.LENGTH_SHORT).show()
+            Log.e("CheckingInFragment", " ${e.message} ${vehicleStatus.vehicleNo}")
         }
     }
 

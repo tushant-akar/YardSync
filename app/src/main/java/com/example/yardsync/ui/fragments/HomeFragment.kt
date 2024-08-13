@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+        viewModel = AuthViewModel(requireContext())
         getEmployeeDetails()
         return binding.root
     }

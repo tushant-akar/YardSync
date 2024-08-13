@@ -1,6 +1,7 @@
 package com.example.yardsync.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentVehicleOutgoingBinding
 import com.example.yardsync.viewModel.VehicleViewModel
@@ -40,11 +42,13 @@ class VehicleOutgoingFragment : Fragment() {
 
         viewModel.vehicle.observe(viewLifecycleOwner) { vehicle ->
             vehicle?.let {
-                binding.edtPersons.setText(vehicle.accompaniedPersons)
-                binding.edtVehicletype.setText(vehicle.vehicleType)
-                binding.edtVehicleNumber.setText(vehicle.vehicleNumber)
-                binding.edtIncomingWeight.setText(vehicle.incomingWeight)
-                binding.vehicleImage.setImageURI(vehicle.vehicleImageUrl?.toUri())
+                binding.edtPersons.text = Editable.Factory.getInstance().newEditable(vehicle.accompaniedPersons.toString())
+                binding.edtVehicletype.text = Editable.Factory.getInstance().newEditable(vehicle.vehicleType)
+                binding.edtVehicleNumber.text = Editable.Factory.getInstance().newEditable(vehicle.vehicleNumber)
+                binding.edtIncomingWeight.text = Editable.Factory.getInstance().newEditable(vehicle.incomingWeight.toString())
+                binding.vehicleImage.load(vehicle.vehicleImageUrl) {
+                    crossfade(true)
+                }
                 driverID = vehicle.driverID ?: ""
                 vehicleID = vehicle.vehicleNumber
             } ?: run {

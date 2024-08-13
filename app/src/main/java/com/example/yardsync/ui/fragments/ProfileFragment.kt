@@ -24,7 +24,7 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+        viewModel = AuthViewModel(requireContext())
         retrieveEmployee()
 
         binding.logoutBtn.setOnClickListener {
