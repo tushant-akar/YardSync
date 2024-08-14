@@ -90,4 +90,7 @@ dependencies {
 
     //QR Code Generator
     implementation(libs.custom.qr.generator)
+
+    //Step Progress
+    implementation(libs.carlosmuvi.segmentedprogressbar)
 }

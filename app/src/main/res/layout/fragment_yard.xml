@@ -28,4 +28,13 @@
             android:textSize="24sp" />
     </androidx.appcompat.widget.Toolbar>
 
+    <com.jama.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
