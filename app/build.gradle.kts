@@ -76,9 +76,6 @@ dependencies {
     //Coil
     implementation(libs.coil)
 
-    //CarouselView
-    implementation(libs.carouselview)
-
     //State Progress
     implementation(libs.stateprogressbar.v009)
 

@@ -50,6 +50,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/rounded_card"
+        android:clipToOutline="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardView" />
@@ -62,6 +63,7 @@
         android:layout_marginTop="135dp"
         android:background="@drawable/round_shape"
         android:backgroundTint="@color/themeColorLight"
+        android:clickable="false"
         android:src="@drawable/upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +88,7 @@
             android:id="@+id/edtVehicleNumber"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -110,6 +113,7 @@
             android:id="@+id/edtVehicletype"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -133,6 +137,7 @@
             android:id="@+id/edtIncomingWeight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -156,6 +161,7 @@
             android:id="@+id/edtPersons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -193,6 +199,5 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/continueBtn"
         app:layout_constraintTop_toBottomOf="@id/persons" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

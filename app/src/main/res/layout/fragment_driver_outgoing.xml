@@ -49,6 +49,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="15dp"
+        android:clipToOutline="true"
         android:background="@drawable/rounded_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="85dp"
+        android:clickable="false"
         android:layout_marginTop="135dp"
         android:background="@drawable/round_shape"
         android:backgroundTint="@color/themeColorLight"
@@ -87,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
+            android:enabled="false"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -111,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
+            android:enabled="false"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +139,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
+            android:enabled="false"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,6 +165,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
+            android:enabled="false"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

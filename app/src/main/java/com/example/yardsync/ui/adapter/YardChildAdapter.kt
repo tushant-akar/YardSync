@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.yardsync.databinding.YardItemRecyclerViewBinding
 import com.example.yardsync.model.VehicleStatus
 
-class YardAdapter(
-    private var vehicleStatus: MutableList<VehicleStatus>
-) : RecyclerView.Adapter<YardAdapter.ViewHolder>() {
+class YardChildAdapter(
+    private var vehicleStatus: List<VehicleStatus>
+) : RecyclerView.Adapter<YardChildAdapter.ViewHolder>() {
+
     inner class ViewHolder(private val binding: YardItemRecyclerViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(vehicleStatus: VehicleStatus) {
@@ -32,8 +33,8 @@ class YardAdapter(
         holder.bind(vehicleStatus[position])
     }
 
-    fun setVehicleStatus(vehicleStatus: List<VehicleStatus>) {
-        this.vehicleStatus = vehicleStatus.toMutableList()
+    fun updateData(newData: List<VehicleStatus>) {
+        vehicleStatus = newData
         notifyDataSetChanged()
     }
 }

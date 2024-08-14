@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentCheckingInBinding
 import com.example.yardsync.model.Vehicle
 import com.example.yardsync.model.VehicleNavArgs
 import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
+import com.example.yardsync.viewModel.VehicleRegisterationViewModel
 import com.example.yardsync.viewModel.VehicleViewModel
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -31,11 +32,11 @@ import kotlinx.coroutines.launch
 class CheckingInFragment : Fragment() {
     private var _binding: FragmentCheckingInBinding? = null
     private val binding get() = _binding!!
-    private val args by navArgs<CheckingInFragmentArgs>()
+    private val sharedViewModel: VehicleRegisterationViewModel by activityViewModels()
     private lateinit var vehicle: VehicleNavArgs
     private lateinit var vehicleImageUri: Uri
     private lateinit var inTime: String
-    private val dockNo: Int = (0..4).random()
+    private val dockNo: Int = (1..4).random()
     private val parkingLot: String = "A"
     private var objective: Int = 0
     private lateinit var viewModel: VehicleViewModel
@@ -58,8 +59,8 @@ class CheckingInFragment : Fragment() {
         binding.stateProgressBar.setStateDescriptionTypeface("font/nunito_medium.ttf")
         binding.stateProgressBar.setStateNumberTypeface("font/nunito_medium.ttf")
 
-        vehicle = args.vehicle
-        vehicleImageUri = args.vehicleImageUri.toUri()
+        vehicle = sharedViewModel.vehicle
+        vehicleImageUri = sharedViewModel.vehicleImageUri.toUri()
 
         val picker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_24H)

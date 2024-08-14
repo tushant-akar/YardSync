@@ -87,9 +87,9 @@
         <EditText
             android:id="@+id/edtVehicleNumber"
             android:layout_width="match_parent"
-            android:inputType="text"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold"
+            android:inputType="text"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -113,8 +113,8 @@
             android:id="@+id/edtVehicletype"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="text"
             android:fontFamily="@font/nunito_bold"
+            android:inputType="text"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>

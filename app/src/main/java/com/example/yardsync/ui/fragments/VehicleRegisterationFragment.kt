@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.yardsync.R
 import com.example.yardsync.databinding.FragmentVehicleRegisterationBinding
-import com.example.yardsync.model.Vehicle
 import com.example.yardsync.model.VehicleNavArgs
-import kotlinx.coroutines.launch
+import com.example.yardsync.viewModel.VehicleRegisterationViewModel
 
 class VehicleRegisterationFragment : Fragment() {
     private var _binding: FragmentVehicleRegisterationBinding? = null
@@ -25,6 +23,7 @@ class VehicleRegisterationFragment : Fragment() {
     private lateinit var persons: String
     private lateinit var incomingWeight: String
     private var vehicleImageUri: Uri? = null
+    private val sharedViewModel: VehicleRegisterationViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,13 +57,9 @@ class VehicleRegisterationFragment : Fragment() {
                 incomingWeight = incomingWeight.toInt(),
                 accompaniedPersons = persons.toInt()
             )
-            val action =
-                VehicleRegisterationFragmentDirections.actionVehicleRegisterationFragmentToDriverRegisterationFragment(
-                    vehicle = vehicle,
-                    vehicleImageUri = vehicleImageUri.toString()
-                )
-            findNavController().navigate(action)
-
+            sharedViewModel.vehicle = vehicle
+            sharedViewModel.vehicleImageUri = vehicleImageUri.toString()
+            findNavController().navigate(R.id.action_vehicleRegisterationFragment_to_driverRegisterationFragment)
         }
 
         binding.cancelBtn.setOnClickListener {

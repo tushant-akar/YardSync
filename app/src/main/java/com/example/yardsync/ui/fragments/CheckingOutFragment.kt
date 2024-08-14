@@ -3,20 +3,18 @@ package com.example.yardsync.ui.fragments
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.yardsync.R
+import com.example.yardsync.databinding.CheckOutDialogBoxBinding
 import com.example.yardsync.databinding.FragmentCheckingOutBinding
-import com.example.yardsync.databinding.YardDialogBinding
 import com.example.yardsync.model.VehicleStatus
 import com.example.yardsync.utils.Supabase.client
 import com.example.yardsync.viewModel.VehicleViewModel
@@ -62,16 +60,26 @@ class CheckingOutFragment : Fragment() {
             }
         }
 
-        origin = binding.edtOrigin.text.toString()
-        destination = binding.edtDestination.text.toString()
-        outgoingWeight = binding.edtOutgoingWeight.text.toString()
-        timeOut = binding.edtTimeOut.text.toString()
-
         binding.continueBtn.setOnClickListener {
-            viewModel.updateVehicleDetails(vehicleNumber = vehicleID, origin = origin, destination = destination, outgoingWeight = outgoingWeight.toInt(), timeOut = timeOut) { success, message ->
+            origin = binding.edtOrigin.text.toString().trim()
+            destination = binding.edtDestination.text.toString().trim()
+            outgoingWeight = binding.edtOutgoingWeight.text.toString().trim()
+            timeOut = binding.edtTimeOut.text.toString()
+
+            viewModel.updateVehicleDetails(
+                vehicleNumber = vehicleID,
+                origin = origin,
+                destination = destination,
+                outgoingWeight = outgoingWeight.toInt(),
+                timeOut = timeOut
+            ) { success, message ->
                 if (success) {
                     updateStatus()
-                    findNavController().navigate(R.id.action_checkingOutFragment_to_mainActivity2)
+                    Toast.makeText(
+                        requireContext(),
+                        "Vehicle $vehicleID checked out successfully!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
@@ -89,7 +97,7 @@ class CheckingOutFragment : Fragment() {
             try {
                 val status = client.from("vehicle_status").select {
                     filter {
-                        eq("vehicle_id", vehicleID)
+                        eq("vehicle_no", vehicleID)
                     }
                 }.decodeSingle<VehicleStatus>()
                 client.from("vehicle_status").update({
@@ -99,7 +107,7 @@ class CheckingOutFragment : Fragment() {
                         eq("vehicle_no", vehicleID)
                     }
                 }
-                val dialogBinding = YardDialogBinding.inflate(layoutInflater)
+                val dialogBinding = CheckOutDialogBoxBinding.inflate(layoutInflater)
                 val dialog = Dialog(requireContext()).apply {
                     setContentView(dialogBinding.root)
                     window?.setLayout(
@@ -108,7 +116,7 @@ class CheckingOutFragment : Fragment() {
                     )
                     setCancelable(true)
                 }
-                dialogBinding.okBtn.setOnClickListener {
+                dialogBinding.checkOutBtn.setOnClickListener {
                     dialog.dismiss()
                     findNavController().navigate(R.id.action_checkingOutFragment_to_mainActivity2)
                 }
