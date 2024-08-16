@@ -36,9 +36,8 @@ YardMaster is built using the following technologies:
 - **Frontend:** Android(XML) - A fast and expressive framework for building natively compiled android applications for mobile.
 - **Backend:** Supabase - A remote database and cloud storage for seamless synchronization.
 - **Authentication:** Supabase Authentication - Secure email authentication to protect user data.
+- **ML Model:** Python - Smart Dock allocation
 - **Data Storage:** Supabase Storage - Scalable cloud storage for data management.
 
 ## Acknowledgments
 We would like to express our gratitude to the NextBest team for their support and contributions to YardSync.
-
----
