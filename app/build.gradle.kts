@@ -1,3 +1,5 @@
+import java.io.FileInputStream
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -8,6 +10,10 @@ plugins {
 android {
     namespace = "com.example.yardsync"
     compileSdk = 34
+
+    val file = rootProject.file("local.properties")
+    val properties = Properties()
+    properties.load(FileInputStream(file))
 
     defaultConfig {
         applicationId = "com.example.yardsync"
@@ -20,12 +26,12 @@ android {
         buildConfigField(
             "String",
             "SUPABASE_URL",
-            "\"${project.findProperty("SUPABASE_URL")}\""
+            properties.getProperty("SUPABASE_URL")
         )
         buildConfigField(
             "String",
             "SUPABASE_KEY",
-            "\"${project.findProperty("SUPABASE_KEY")}\""
+            properties.getProperty("SUPABASE_KEY")
         )
     }
 
